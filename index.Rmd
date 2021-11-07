@@ -1,0 +1,11 @@
+---
+title: "Tina Zhao's website"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: cerulean
+---
+
+## Welcome
+Hello, my name is Tina and this is my personal website. I am a second-year MPH student at Columbia University Mailman School of Public Health. I am in the Epidemiology department, with a certificate in Biostatistics. I also work at CUMC as a clinical research coordinator. 

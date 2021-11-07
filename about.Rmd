@@ -1,0 +1,16 @@
+---
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: cerulean
+---
+
+# Introduction
+Hello, my name is Tina and this is my personal website. I am a second-year MPH student at Columbia University Mailman School of Public Health. I am in the Epidemiology department, with a certificate in Biostatistic. I also work at CUMC as a clinical research coordinator. 
+
+# Music
+I play a traditional Chinese instrument called Qin, which has a history of more than 3000 years.
+
+# Hobby
+I like music, traditional Asian cultures, and astronomy. 

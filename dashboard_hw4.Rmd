@@ -1,0 +1,66 @@
+---
+title: "Dashboard_hw4"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library("p8105.datasets")
+library(plotly)
+
+library(flexdashboard)
+```
+
+```{r}
+data("rest_inspec")
+
+rest_inspec = 
+  rest_inspec %>%
+    subset(!boro == "Missing") %>%
+    subset(!grade == "Not Yet Graded") %>%
+    drop_na(score, grade)
+  
+
+new_df = sample_n(rest_inspec, 5000)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A: Scores and grade
+
+```{r}
+new_df %>%
+  mutate(
+    text_label = str_c("Cuisine: ", cuisine_description)
+  ) %>%
+  plot_ly(x = ~grade, y = ~score, color = ~grade, text = ~text_label, alpha = 0.5, type = "scatter", mode = "markers")
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B: Score and boro
+
+```{r}
+new_df %>%
+  mutate(
+    boro = fct_reorder(boro, score)
+  ) %>%
+  plot_ly(y = ~score, x = ~boro, type = "box", color = ~boro, colors = "viridis")
+```
+
+### Chart C: Number of restaurants in each boro
+
+```{r}
+new_df %>%
+  count(boro) %>%
+  mutate(
+    boro = fct_reorder(boro, n) 
+  ) %>%
+plot_ly(x = ~boro, y = ~n, color = ~boro, type = "bar", colors = "viridis")
+```
+
